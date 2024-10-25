@@ -1,12 +1,66 @@
-## Hi there 👋
+# 주차 대학교, 차대
+> 🪙 해당 프로젝트는
+> 2023 디지텍 캡스톤디자인 경진대회에서 은상을 받았습니다. (41개 작품 중 4~8등 이내)
+> [관련 기사](https://m.dhnews.co.kr/news/view/1065589841520681)
 
-<!--
+> 🥇 해당 프로젝트는
+> 2023 대림대학교 캡스톤 디자인 경진대회에서 대상을 받았습니다. (총장상)
 
-**Here are some ideas to get you started:**
 
-🙋‍♀️ A short introduction - what is your organization all about?
-🌈 Contribution guidelines - how can the community get involved?
-👩‍💻 Useful resources - where can the community find your docs? Is there anything else the community should know?
-🍿 Fun facts - what does your team eat for breakfast?
-🧙 Remember, you can do mighty things with the power of [Markdown](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
--->
+<img width="100%" alt="" src="https://github.com/user-attachments/assets/5e135586-6bcc-43d2-a7d1-86331ecedfd3">
+
+
+
+## 차대란?
+```planetext
+저희 차대는 '주차 대학교'의 줄임말로, 대학교의 주차장을 타겟으로 한 SaaS 플랫폼 입니다.
+딥러닝을 활용해 대학교 내에 존재하는 주차장을 기존에 설치되어 있던 폐쇄회로 카메라 (CCTV)를 활용해 
+각각의 대학교들이 추가적인 설비와 환경 구성없이 사용할 수 있는 서비스를 제공합니다. 
+```
+
+## 개발이유, 동기
+### 1. 환경적인 문제
+```
+주차 관리를 위해 필요한 설비(시중에 판매하고 있는 주차장 관리 시스템이 도입된 CCTV나 그와 유사한 제품 등)나 환경을 구축하기 힘든 상황이 있다.
+경제적인 문제나 새로운 설비를 설치할 만한 공간이 아닌 경우가 빈번하다.
+
+이 작품은 CCTV 가 아닌 카메라 모듈만으로 OpenCV YOLO 기법을 활용하여 이미지를 라벨링한 후
+Object Detection을 통해 차량이 있는지 없는지를 확인하고
+그 데이터들을 분석해 통계 집계와 주차 도움 기능 등을 제공할 수 있다.
+```
+## 문제 해결
+### 1. 차량 객체 탐지를 위한 고충
+```plaintext
+CCTV나 라즈베리 파이의 8MP의 동영상을 분석하기엔 처리해야 하는 데이터의 크기가 크다는 문제가 있었다. 
+이를 해결하기 위해서 영상을 처리하는 방식 대신 단순히 데이터의 결과물을 JSON 파일로 만들어 통신하기 위해
+동영상의 프레임을 줄이거나 사진 형태의 데이터를 처리하는 방법을 사용했다.
+
+또 다른 문제로 이미 만들어져 있는 model을 사용할지에 대한 문제였는데
+현재 환경의 카메라 모듈 위치, 그 카메라에서 바라보는 차량의 모습을 학습시키는 편이 더 좋은 결과를 가지고 올 수 있을거라고 생각해 커스텀한 모델을 사용하기로 했다.
+짧은 시간에 데이터를 많이 모으기엔 힘든 부분이 있어 기본 이미지를 변환하는 방법을 사용하였다.
+그래서 기본 이미지 약 1200장에 변환된 이미지 8000여장을 사용해 모델링을 진행하였다.
+```
+
+### 2. YOLO와 faster-RCNN의 선택 과정 중 논의
+```plaintext
+yolo와 RCNN의 방식은 서로 다르다.
+
+속도와 정확도에서의 강점을 띄는 두 방식에서 우리가 사용해야 할 영상분석을 통한 좌석 및 혼잡도 분석은
+정확도와 속도 중에 어느 것을 중점으로 여겨 개발해 나가야 할까 논의한 결과
+우선적으로 실시간이여야 하며, 정확성이 좋고, 속도도 빠른 yolo를 사용하기로 했다.
+
+yolo의 경우 클래스가 적을수록 좋은 결과를 낼 수 있고 겹치는 객체가 없으면 좋은 정확성과 이미지 랜더링을 단 한번만 하기 때문에 빠르다는 장점이 있어 yolo를 사용하게 되었다.
+```
+
+
+## 사용한 기술
+![USED STACKS](https://skillicons.dev/icons?i=react,ts,nextjs,django,python,mysql,docker,pytorch)
+
+## 차대 아키텍쳐
+![차대 아키텍쳐 v1](https://github.com/user-attachments/assets/2d1235fb-34c6-4eb3-882e-65d256ee7b19)
+
+## 차대 
+
+
+## 차대 브로슈어
+<img width="45%" alt="주차대학교 겉지" src="https://github.com/user-attachments/assets/e785f9a7-5ce7-4183-a0c5-589e956acb4d"> <img width="45%" alt="주차대학교 속지" src="https://github.com/user-attachments/assets/6cbf90fe-dca1-4888-b1bf-bcdcf43c63dd">
